@@ -74,8 +74,8 @@ select b.userName, b.prodName, b.price, b.amount, timestamp('2022-05-1', '12:13:
        u.addr, u.mobile,(select date_add(주문날짜, interval 5 day)) as 도착날짜
 from buytbl as b
 left join usertbl as u
-on b.userName = u.userName
-where b.userName = '이승기';
+on b.userName = u.userName;
+
 
 
 

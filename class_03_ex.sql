@@ -32,8 +32,8 @@ insert into usertbl values('홍길동', '1911', '부산', '010-2222-2222');
 insert into usertbl values('이순신', '1999', '대구', '010-3333-3333');
 
 select * from usertbl;
-select * from buytbl;
 
+select * from buytbl;
 -- 구매 테이블 데이터 입력
 -- insert into buytbl values('이승기2', '운동화', '50', '1' ); -- userName에 userbtl에 없는 userName을 넣으면 오류가 난다.
 insert into buytbl values('이승기', '운동화', '50', '1' );
