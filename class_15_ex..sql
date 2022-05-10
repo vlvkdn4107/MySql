@@ -90,10 +90,12 @@ where m.to_date = '9999-01-01';
 
 -- 문제 2
 -- 인라인 뷰로 출력하시오
+use employees;
 select *
 from employees as e, (select *
 					  from dept_manager
-                      where to_date = '9999-01-01') as m
+                      where to_date = '9999-01-01'
+                      and dept_no = 'd003') as m
 where e.emp_no = m.emp_no;
 
 -- 스칼라 서브쿼리 (select 절에 사용하는 서브 쿼리)
@@ -151,8 +153,44 @@ from titles as t
 where t.emp_no = (select emp_no
 				 from employees as e
 				 where emp_no = 11111);
-
-
 select * from employees limit 3000;
 select * from titles;
 select * from dept_emp;
+
+select * from salaries;
+select * from employees;
+select * from titles;
+
+
+
+SELECT * 
+FROM departments as a 
+INNER JOIN dept_emp as b 
+ON a.dept_no = b.dept_no WHERE dept_name = 'Marketing' AND b.to_date = '9999-01-01' limit 10;
+
+
+SELECT * 
+FROM dept_manager as a 
+LEFT JOIN departments as b 
+ON a.dept_no = b.dept_no 
+WHERE b.dept_name = 'Finance';
+
+SELECT * 
+FROM employees as e 
+LEFT JOIN titles as t 
+ON e.emp_no = t.emp_no 
+WHERE t.title = 'senior Engineer' limit 10;
+
+
+SELECT emp_no, first_name, gender 
+FROM employees LIMIT 10;
+
+SELECT e.emp_no, e.first_name, e.last_name, e.gender, d.dept_no, d.from_date, d.to_date 
+FROM employees as e 
+RiGHT JOIN dept_manager as d 
+ON e.emp_no = d.emp_no 
+WHERE e.gender = 'M';
+
+SELECT emp_no, first_name, last_name, gender FROM employees LIMIT 10;
+
+
