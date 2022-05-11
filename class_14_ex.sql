@@ -55,6 +55,7 @@ where name in(
               where address = '서울');
 
 select * from reservation;
+select * from customer;
 -- join문으로 변경해서 같은 결과를 출력
 select r.id, r.reservedate, r.roomnum, r.name, c.address
 from reservation as r
@@ -77,8 +78,7 @@ from (select name, reservedate, (roomnum) as reservedRoom
 */
 
 -- 서브 쿼리를 사용해서 문제만들기
-select * from reservation;
-select * from customer;
+
 
 -- where절에 사용하는 서브 쿼리를 사용해서 나이가 21살 이상의 예약한 고객들만 출력
 select id, name, reserveDate, roomNum
@@ -86,6 +86,8 @@ from reservation
 where name in(select name
 	   from customer
        where age > 20);
+
+
 
 -- 2020-05-02 일자로 예약한 고객의 id와 이름 조회
 select id, name
@@ -119,3 +121,14 @@ from reservation
 where name in(select name
 			  from customer
               where address = '서울'or'인천');
+              
+              
+select * from reservation;
+select * from customer;
+
+select *,(select roomNum
+		  from reservation
+          where id =2) as '예약한 방번호'
+from customer
+where id = 2;
+ 
